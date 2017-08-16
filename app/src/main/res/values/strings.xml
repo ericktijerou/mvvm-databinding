@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">mvvm</string>
+    <string name="default_loading">Press to add users!</string>
+    <string name="error_loading">Error</string>
+</resources>

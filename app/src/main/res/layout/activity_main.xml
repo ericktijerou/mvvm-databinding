@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="mainViewModel"
+            type="erick.android.mvvm.ui.user.MainViewModel"/>
+    </data>
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:popupTheme="@style/AppTheme.PopupOverlay"/>
+
+        </android.support.design.widget.AppBarLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+
+            <ProgressBar
+                android:id="@+id/pb_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:visibility="@{mainViewModel.userProgress}"/>
+
+            <TextView
+                android:id="@+id/tv_message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@{mainViewModel.textMessage}"
+                app:visibility="@{mainViewModel.tvMessage}"/>
+
+            <ImageView
+                android:id="@+id/iv_arrow"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:src="@drawable/arrow"
+                android:layout_gravity="end"
+                android:layout_marginTop="15dp"
+                android:tint="@color/colorAccent"
+                android:rotation="120"
+                app:visibility="@{mainViewModel.ivArrow}"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_users"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:scrollbars="vertical"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                app:visibility="@{mainViewModel.userRecycler}"
+                tools:listitem="@layout/item_list_user"/>
+
+
+        </LinearLayout>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="16dp"
+            android:onClick="@{mainViewModel::onClickFabLoad}"
+            android:src="@drawable/ic_add"/>
+
+    </android.support.design.widget.CoordinatorLayout>
+
+</layout>
